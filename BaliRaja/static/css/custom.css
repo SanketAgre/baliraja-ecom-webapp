@@ -1,0 +1,12 @@
+.checkoutform label{
+    font-size: 14px;
+}
+
+.checkoutform input{
+    font-size: 14px;
+}
+
+.prod_qty_err_msg {
+    font-size: 12px;
+    margin-bottom: 0;
+}

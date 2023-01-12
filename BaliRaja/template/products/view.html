@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+    .badge{
+        font-weight: 100;
+    }
+    hr{
+        margin: 2px;
+    }
+    
+
+
+</style>
+
+
+<div class="py-1 my-4 bg-warning">
+    <div class="container-fluid my-4 ">
+        <a class="text-dark" href="{% url 'home' %}"> Home /</a>
+        <a class="text-dark" href="{% url 'collection' %}"> Collections /</a>
+        <a class="text-dark" href="{% url 'collectionview' products.category.slug %}"> {{products.category.name}} /</a>
+        <a class="text-dark" href="{% url 'productview' products.category.slug products.slug %}"> {{products.name}} </a>
+        <a href="{% url 'collectionview' products.category.slug %}" class="btn btn-warning float-end text-dark"> <h4><i class="fa fa-reply"></i></h4></a>
+    </div>
+</div>
+
+
+<!-- <div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 my-4">
+                <div class="card shadow product_data height-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{ products.product_image.url }}" class="w-100" alt="image">
+                                {% if products.tag %}
+                                <label class="products-viewtag">{{products.tag}}</label>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-8">
+                                <h2 class="mb-0 text-center">
+                                    {{ products.name }}
+                                    {% if products.trending %}
+                                        <label style="font-size: 16px;" class="float-end badge bg-danger trending_tag">Trending</label>
+                                    {% endif %}
+                                </h2>
+                                <hr>
+                                <p class="me-3">
+                                    {{ products.small_desc }}
+                                </p>
+                                <label class="me-3"> Original Price : <s>Rs {{products.original_price | stringformat:'d'}}</s></label>
+                                <label class="me-3"> Selling Price : Rs {{products.selling_price | stringformat:'d'}}</label>
+                                
+                                <hr>
+                                {% if products.quantity > 0  %}
+                                    <label class="badge bg-success"> In Stock</label>
+                                {% else %}
+                                <label class="badge bg-danger"> Out Of Stock</label>
+                                {% endif %}
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ products.id }}" class="prod_id">
+                                        <label for="quantity">Quantity</label>
+                                        <div class="input-group text-center mb-3" style="width:100px;">
+                                            <button class="input-group-text btn-danger decrement-btn">-</button>
+                                                <input type="text" name="quantity" class="from-control qty-input text-center" value="1" style="width: 35px;"> 
+                                            <button class="input-group-text btn-warning increment-btn">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <br>
+                                        {% if products.quantity > 0 %}
+                                            <button type="button" class="btn btn-warning me-3 float-start addToCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                                        {% endif %}
+                                        <button type="button" class="btn btn-success me-3 float-start addToWishlist">Add to Wishlist  <i class="fa fa-heart"></i></button>
+                                        <a class="btn btn-warning" href="{% url 'cart' %}"> View Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                            <h3>Description</h3>
+                            <p class="mt-3">
+                                {{products.product_desc}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 my-4">
+                <div class="card shadow product_data height-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                {% if products.trending %}
+                                    <label style="font-size: 16px; margin-bottom:3px ;" class="float-start badge bg-danger trending_tag"><i class="fa-solid fa-sun-bright">Trending</i></label>
+                                {% endif %}
+                                {% if products.quantity > 0  %}
+                                    <label class="badge float-end bg-success"> In Stock</label>
+                                {% else %}
+                                <label class="badge float-end bg-danger"> Out Of Stock</label>
+                                {% endif %}
+                                <img src="{{ products.product_image.url }}" class="w-100" alt="image">
+                            </div>
+                            <div class="col-md-8">
+                                <h2 class="mb-0 text-center" style="text-transform: uppercase;">
+                                    {{ products.name }}
+                                </h2>
+                                <hr>
+                                <p class="mb-0" style="text-transform: capitalize;">
+                                    {{ products.small_desc }}
+                                </p >
+                                <label> Original Price : <s>Rs {{products.original_price | stringformat:'d'}}</s></label>
+                                <label > Selling Price : Rs {{products.selling_price | stringformat:'d'}}</label>
+                                <hr>
+                                
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ products.id }}" class="prod_id">
+                                        <label for="quantity">Quantity</label>
+                                        <div class="input-group text-center mb-3" >
+                                            <button class="input-group-text btn-danger decrement-btn">-</button>
+                                                <input type="text" name="quantity" class="from-control qty-input text-center" value="1" style="width: 35px;"> 
+                                            <button class="input-group-text btn-warning increment-btn">+</button>
+                                        </div>
+                                            {% if products.quantity > 0 %}
+                                            <button type="button" style="margin: 0 6px 2px 0; padding:5px 0 5px 0" class="btn btn-warning float-start addToCartBtn"> <i class="fa fa-shopping-cart">Add to Cart</i></button>
+                                            {% else %}
+                                            <button type="button" style="margin-right: 6px; padding:5px 0 5px 0" class="btn btn-success float-start addToWishlist"><i class="fa fa-heart">Add to Wishlist </i></button>
+                                            {% endif %}
+                                            <a class="btn btn-warning" href="{% url 'cart' %}"><i class="fa fa-shopping-cart">View Cart</i></a>
+                                    </div>
+                                    <div class="col-md-8 mt-2">
+                                        <h3>Description</h3>
+                                        <p class="mt-3" style="text-transform: capitalize;">
+                                            {{products.product_desc}}
+                                        </p>
+                                        {% if products.tag %}
+                                            <label class="products-viewtag">{{products.tag}}</label>
+                                            {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="py-1 my-4 bg-warning">
+    <div class="container-fluid my-4 ">
+        <a class="text-dark" href="{% url 'home' %}"> Home /</a>
+        <a class="text-dark" href="{% url 'myorder' %}"> My Orders </a>
+        <a href="{% url 'home' %}" class="btn btn-warning float-end text-dark"> <h4><i class="fa fa-reply"></i> </h4></a>
+    </div>
+</div>
+
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="card shadow ">
+                <div class="card-header text-center ">
+                    <h3 class="mb-0"> MY ORDER </h3>
+                </div>
+                <div class="card-body text-center">
+                    <table class="table table-bord">
+                        <thead>
+                            <tr>
+                                <th>Order Date</th>
+                                <th>Tracking No</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <!-- <th>Action</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'orderview' item.tracking_no %}">{{ item.created_at }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'orderview' item.tracking_no %}">{{ item.tracking_no }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'orderview' item.tracking_no %}">{{ item.total_price }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'orderview' item.tracking_no %}">{{ item.status }}</a>
+                                    </td>
+                                    <!-- </td>
+                                    <td>{{ item.tracking_no }}</td>
+                                    <td>{{ item.total_price }}</td>
+                                    <td>{{ item.status }}</td>
+                                    
+                                    <td>
+                                        <a href=class="btn btn-warning "> View Order</a>
+                                    </td> -->
+
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock body %}

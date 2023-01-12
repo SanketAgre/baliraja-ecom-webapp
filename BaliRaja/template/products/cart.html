@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+    .name.sanket{
+        font-weight: 700;
+    }
+</style>
+
+<div class="py-1 my-4 bg-warning">
+    <div class="container-fluid my-4 ">
+        <a class="text-dark" href="{% url 'home' %}"> Home /</a>
+        <a class="text-dark" href="{% url 'cart' %}"> Cart </a>
+        <a class="text-dark float-end"  href="{% url 'collection' %}"><h4> <i class="fa fa-reply"></i></h4></a>
+    </div>
+</div>
+
+
+<div class="py-5">
+    <div class="container float-en px-4">
+        <div class="row" style="margin-right: 1px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-11 my-4">
+                <div class="card shadow ">
+                    <div class="card-body cartdata">
+                        {% if Cart %}
+                            {% for item in Cart %}
+                                <div class="row product_data">
+                                    <div class="col-md-2 my-auto">
+                                        <img src="{{ item.Product.product_image.url }}" height="100px" width="100px" alt="image here" style="margin-left: 21px;margin-bottom: 19px;">
+                                    </div>
+                                    <div class="col-md-2 text-center my-auto">
+                                        <label class="name sanket" for="name">Product Name</label>
+                                        <h6 class="my-2">{{ item.Product.name }}</h6>
+                                    </div>
+                                    <div class="col-md-2 text-center my-auto">
+                                        <label class="name sanket" for="name">Price</label>
+                                        <h6 class="my-2">{{ item.Product.selling_price }}</h6>
+                                    </div>
+                                    <div class="col-md-2 text-center my-auto">
+                                        <input type="hidden" value="{{ item.Product_id }}" class="prod_id">
+                                        {% csrf_token %}
+                                        <p class="text-white bg-danger prod_qty_err_msg">Out Of Stock</p>
+                                        <div class="input-group text-center mb-3" style="width:130px;margin-top: 24px;">
+                                            <input type="hidden" value="{{ item.Product.quantity }}" class="prod_qty">
+                                            <button class="input-group-text btn-danger changeQuantity decrement-btn">-</button>
+                                            <input type="text" name="quantity" class="from-control qty-input text-center" value="{{ item.product_qty }}" style="width: 65px;" > 
+                                            <button class="input-group-text btn-warning changeQuantity increment-btn">+</button>
+                                        </div>                                        
+                                    </div>
+                                    <div class="col-md-2 text-center my-auto">
+                                        <label class="name sanket" for="name">Quantity</label>
+                                        <h6 class="my-2"> {{ item.Product.title_qty }}</h6>
+                                    </div>
+                                    <div class="col-md-2 my-auto">
+                                        <button class="btn btn-danger float-start delete-cart-item"><i class="fa fa-trash"></i> Remove</button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <!-- <button class="btn btn-warning float-start checkout-item"><i class="fa fa-trash"></i> Checkout</button> -->
+                            <a href="{% url 'checkout' %}" class="btn btn-warning mt-2 w-100"> Checkout </a>
+                        {% else %}
+                            <h4>Your Cart Is Empty </h4>
+                        {% endif %}
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

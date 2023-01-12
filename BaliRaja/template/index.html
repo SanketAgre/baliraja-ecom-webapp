@@ -1,0 +1,1485 @@
+
+{% extends 'base.html' %}
+
+      {% block title %}
+      index
+      {% endblock title %}
+
+      {% block body %}
+      
+
+
+
+    <style>
+      .carousel-item{
+        height: 400px;
+      }
+      .input text{
+        width: 30px !important;
+        height: 30px;
+      }
+      .d-block{
+        border-radius: 1.25rem;
+      }
+      .row{
+        --bs-gutter-y: 1rem;
+      }
+      .btn-success{
+        
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: hsl(158, 100%, 2%);
+        border-right-width: 9.994;
+        border-right-width: 2px;
+        border-top-width: 2px;
+        border-left-width: 2px;
+        border-bottom-width: 2px;
+        color: white;
+      }
+      .btn-warning{
+        margin-top: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: hsl(158, 100%, 2%);
+        border-color: #fff70f;
+        border-right-width: 9.994;
+        border-right-width: 2px;
+        border-top-width: 2px;
+        border-left-width: 2px;
+        border-bottom-width: 2px;
+      }
+      .badge{
+        font-weight: 100;
+        font-size: 10px;
+      }
+      span.float-start{
+        font-size: 13px;
+        line-height: 5px;
+      }
+      .hr{
+        margin: 2px; 
+        opacity: 1.25;
+      }
+      .left{
+        display: inline-block;
+      }
+      .right{
+        display: inline-block;
+      }
+      
+     .sanket{
+      width: 80vw;
+      max-height: 50vh;
+      border-radius: 1.25rem;
+     }
+     .box1{
+      margin: 2vw 8vw 2vw 8vw;
+     }
+     .agre{
+      text-align: center;
+      margin: 0;
+     }
+      #box-6{
+          display: none;
+        }
+     @media only screen and (max-width: 767px) {
+        #box-1{
+          display: none;
+        }
+     }
+     #box-4{
+      display: none;
+     }
+     @media only screen and (max-width: 1141px) {
+        #box-4{
+          display: block;
+        }
+        #box-5{
+          display: none;
+        }
+     }
+     .addToWishlist{
+      right: 8px;
+      top: 4px;
+      padding-left: 0px;
+      padding-right: 0px;
+     }
+     .carousel-caption{
+      top:225px;
+      padding: 0;
+      text-transform:uppercase;
+      line-height: 20px;
+     }
+    </style>
+
+        <!-- CAROUSEL ITOMS -->
+  
+  <div class="container-fluid my-2" id="box-1">
+    <div class="row" style="height: 310px;">
+      <div class="col-md-8"  style="height: 300px;">
+        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner" style="height: 300px;">
+            <div class="carousel-item active"  data-bs-interval="10000">
+              <a href="collection">
+                <img src="/static/images/5.jpg" class="d-block w-100 h-75"  alt="...">
+                <div class="carousel-caption ">
+                  <h4 class="text-center padding-top-0" style="margin-bottom: 0px;">ALPHANSO MANGOES</h4>
+                  <p>Some representative placeholder content for the second slide.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="3000">
+              <a href="collection">
+                <img src="/static/images/32.jpg" class="d-block w-100 h-75"  alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Second slide label</h4>
+                    <p>Some representative placeholder content for the second slide.</p>
+                  </div>
+              </a>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+              <a href="collection">
+                <img src="/static/images/31.jpg" class="d-block w-100 h-75"  alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                      <h4>Alphanso Mangoes</h4>
+                      <p>Some representative placeholder content for the second slide.</p>
+                  </div>
+                </a>
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+      </div>
+      <div class="col-md-4" >
+        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+              <img src="/static/images/34.jpg" class="d-block w-100 h-75"  alt="static img">
+              <div class="carousel-caption d-none d-md-block">
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- carousel in mobile view -->
+
+
+
+<hr>
+ <!-- category testing code  -->
+
+<div class="container-fluid" style="padding: 0;"  id="box-2">
+  <div class="box">
+    <div class="row" style="margin: auto;;">
+      {% for item in trending_category %}
+          <div class="card" style="height: 90px; width: 100px; border-radius: 18.25rem; padding: 4px; margin: 9px;">
+            <a href="{% url 'collectionview' item.slug %}">
+              <div class="card-body" style="padding: 0;">
+                <div class="catagory-image">
+                    <img src="{{ item.image.url }}"  alt="catagory-image" style="border-radius: 18.25rem;" class="w-100">
+                </div>
+                <h6 class="text-center">{{item.name}}</h6>
+            </div>
+            </a>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- trending page in mobile view -->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">TRENDING 
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+{% for item in trendin_product %}
+    <div class="card product_data" style="height: 234px; width: 43vw; padding: 0; margin: 6px 4px 6px 4px;">
+      <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+        <a href="{% url 'productview' item.category.slug item.slug %}">
+          <div class="catagory-image">
+              <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; height: 90px;">
+          </div>
+          <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+        </a>
+        <div class="row">
+            <div class="left w-50">
+                {% if item.quantity > 0  %}
+                  <label class="badge bg-success float-start"> In Stock</label>
+                {% else %}
+                  <label class="badge bg-danger float-start"> Out Of Stock</label>
+                {% endif %}
+                <br>
+                <span class="float-start"> {{ item.qty_prod }}</span>
+                <br>
+                <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+            </div>
+            <div class="right w-50">
+                {% csrf_token %}
+                  <input type="hidden" value="{{ item.id }}" class="prod_id">
+                  <label for="quantity"></label>
+                <div class="input-group text-center mb-3">
+                    <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                    {% if item.quantity > 0 %}
+                      <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                    {% else %}
+                      <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</div>
+</div>
+
+<!-- TRENDING PRODUCTS -->
+<div class="container-fluid" id="box-5">
+<div class="row">
+  <div class="col-md-12 my-2">
+          <hr style="opacity: 1.25;">
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">TRENDING 
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end" style="margin-top:-6px;"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+      <div class="row">
+      {% for item in trendin_product %}
+          <div class="col-md-2 product_data">
+              <div class="card">
+                      <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                          <div class="catagory-image">
+                              <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                          </div>
+                          <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                        </a>
+                        <div class="row">
+                            <div class="left w-50">
+                                {% if item.quantity > 0  %}
+                                  <label class="badge bg-success float-start"> In Stock</label>
+                                {% else %}
+                                  <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                {% endif %}
+                                <br>
+                                <span class="float-start"> {{ item.qty_prod }}</span>
+                                <br>
+                                <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                            </div>
+                            <div class="right w-50">
+                                {% csrf_token %}
+                                  <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                  <label for="quantity"></label>
+                                <div class="input-group text-center mb-3">
+                                    <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                    {% if item.quantity > 0 %}
+                                      <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                    {% else %}
+                                      <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" style="right: 10px;" >Wishlist </button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+              </div>
+          </div>
+      {% endfor %}
+      </div>
+  </div>
+</div>
+</div>
+
+    <!-- best deals in mobile view  -->
+
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">BEST DEALS 
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+    {% for item in best_deal %}
+      <div class="card product_data" style="height: 234px; width: 43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+      <!-- BEST DEALS -->
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">BEST DEALS
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end" style="margin-top:-5px;"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+          <div class="row">
+          {% for item in best_deal %}
+            
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                        <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+    <!-- fruits in mobile view  -->
+
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">FRUITS
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in fruits %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- Fruits -->
+
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">FRUITS
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+          <div class="row">
+          {% for item in fruits %}
+          
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                        <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+    <!-- vegitables mobile view -->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">VEGITABLES
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in vegitables %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- VEGITABLES -->
+
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">VEGITABLES
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+          <div class="row">
+          {% for item in vegitables %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                        <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+    <!-- harbs mobile view  -->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">HARBS
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in harbs %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- Herbs -->
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">HARBS
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+          <div class="row">
+          {% for item in harbs %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+      <!-- dry fruits mobile view  -->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">DRY FRUITS
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in dry_fruits %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- Dry Fruits -->
+ <div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">DRY FRUITS
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+          <div class="row">
+          {% for item in dry_fruits %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+    <!-- dal in mobile view  -->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">DAL
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in dal %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- Dal -->
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">DAL
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+        <hr>
+          <div class="row">
+          {% for item in dal %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div> 
+
+<!-- Masale  mobile view-->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">SPICES
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in masale %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- Masale -->
+ <div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+        <hr>
+        <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">SPICES
+          <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+        </h4>
+      <hr>
+          <div class="row">
+          {% for item in masale %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div> 
+
+
+          <!-- Farming sector -->
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">AGRICULTURE SECTOR
+    <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+  </h4>
+<hr>
+
+
+<div class="container-fluid">
+  <p class="agre">Framing Products And Tools directly from Industry to your Farm</p>
+  <div class="box1">
+      <img class="sanket" src="/static/images/22.jpg" alt="FARMING SECTOR">
+  </div>
+</div>
+
+<!-- Farming Tools  mobile view-->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">FARMING TOOLS 
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in farming_Tools %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+          <!-- Farming Tools -->
+
+ <div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+        <hr>
+        <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">FARMING TOOLS
+          <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+        </h4>
+      <hr>
+          <div class="row">
+          {% for item in farming_Tools %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div> 
+
+<!-- fertilizer  mobile view-->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">FERTILIZERS 
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in fertilizer %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+        <!-- fertilizer -->
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+        <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px; ">FERTILIZERS
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+          <hr>
+          <div class="row">
+          {% for item in fertilizer %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- insecticides mobile view -->
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">INSECTISIDES 
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in insecticides %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+        <!-- insecticides -->
+
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px; ">INSECTICIDE'S
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+          <hr>
+          <div class="row">
+          {% for item in insecticides %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start"> In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Other Farming Tools And Products mobile view-->
+
+<div class="container-fluid" id="box-4">
+  <hr>
+  <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px;">FARMING TOOLS
+  </h4>
+<hr>
+<div class="row" style="margin-left: 6px; flex-wrap: none;">
+  {% for item in other_farming_Tools %}
+      <div class="card product_data" style="height: 234px; width:43vw; padding: 0; margin: 6px 4px 6px 4px;">
+              <div class="card-body" style="height:80% !important;padding-top: 5px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="catagory-image">
+                      <img src="{{ item.product_image.url }}"  alt="catagory-image" class="" style="width: 100%; max-height: 90px;">
+                  </div>
+                  <h6 class="text-center" style="margin-top: 4px; text-transform:capitalize;">{{item.name}}</h6>
+                </a>
+                <div class="row">
+                    <div class="left w-50">
+                        {% if item.quantity > 0  %}
+                          <label class="badge bg-success float-start"> In Stock</label>
+                        {% else %}
+                          <label class="badge bg-danger float-start"> Out Of Stock</label>
+                        {% endif %}
+                        <br>
+                        <span class="float-start"> {{ item.qty_prod }}</span>
+                        <br>
+                        <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                    </div>
+                    <div class="right w-50">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ item.id }}" class="prod_id">
+                          <label for="quantity"></label>
+                        <div class="input-group text-center mb-3">
+                            <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                            {% if item.quantity > 0 %}
+                              <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 4px;" >Add </button>
+                            {% else %}
+                              <button type="button" class="btn btn-transparent btn-success mx-0 float-end addToWishlist" >Wishlist </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+              </div>
+      </div>
+{% endfor %}
+</div>
+</div>
+
+        <!-- Other Farming Tools And Products -->
+<div class="container-fluid" id="box-5">
+  <div class="row">
+      <div class="col-md-12 my-2">
+          <hr>
+          <h4 class="text-center padding-top-0" style="margin-bottom: 26px;margin-top: 0px; margin-bottom: 0px; ">OTHER FARMING TOOLS AND PRODUCTS
+            <a href="{% url 'collection' %}" class="btn btn-warning float-end"><i class="fa fa-bars"></i> All Category</a>
+          </h4>
+          <hr>
+          <div class="row">
+          {% for item in other_farming_Tools %}
+              <div class="col-md-2 product_data">
+                  <div class="card">
+                          <div class="card-body" style="height:80% !important;padding-top: 6px;padding-right: 6px;padding-left: 6px;padding-bottom: 6px;">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                              <div class="catagory-image">
+                                  <img src="{{ item.product_image.url }}"  alt="catagory-image" class="w-100">
+                              </div>
+                              <h6 class="text-center mt-3" style="margin-top: 0px;margin-bottom: 0px;">{{item.name}}</h6>
+                            </a>
+                            <div class="row">
+                                <div class="left w-50">
+                                    {% if item.quantity > 0  %}
+                                      <label class="badge bg-success float-start" > In Stock</label>
+                                    {% else %}
+                                      <label class="badge bg-danger float-start"> Out Of Stock</label>
+                                    {% endif %}
+                                    <br>
+                                    <span class="float-start"> {{ item.qty_prod }}</span>
+                                    <br>
+                                    <label class="float-start"><h7> Rs {{item.selling_price | stringformat:'d'}} </h7> </label>
+                                </div>
+                                <div class="right w-50">
+                                    {% csrf_token %}
+                                      <input type="hidden" value="{{ item.id }}" class="prod_id">
+                                      <label for="quantity"></label>
+                                    <div class="input-group text-center mb-3">
+                                      <input type="hidden" name="quantity" class="from-control qty-input text-center float-start" value="1" style="width: 35px;"> 
+
+                                        {% if item.quantity > 0 %}
+                                          <button type="button" class="btn btn-transparent btn-warning  mx-0 float-end addToCartBtn" style="left: 14px;" >Add </button>
+                                        {% else %}
+                                          <button type="button" class="btn btn-transparent btn-success me-3 float-end addToWishlist" style="right: 10px;">Wishlist </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+
+          
+  {% endblock body %}
+  

@@ -1,0 +1,99 @@
+<style>
+  .nav{
+    background-color: black;
+  }
+  .svg{
+    height: 6rem;
+    width: 2rem;
+    padding-right: .0005rem;
+    padding-left: .0005rem;
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 2px solid black;
+
+  }
+  .nav-link{
+    padding-right: 1.3rem;
+    padding-left: .5rem;
+    /* background-color: black; */
+    color: #000000;
+    font-size: 21px;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    color: rgb(4, 4, 4);
+  }
+  a{
+    color: #0f1012;
+}
+ul {display: inline-block;}
+
+ul li{
+  display: inline-block;
+  margin: 0 6px;
+}
+
+.navbar-nav{
+  display: inline-block;
+}
+</style>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img  class="svg balirajalogo w-50"src="/static/images/1.jfif" alt="logo" > <i class="fa fa " style="font-size: 25px;">BaliRaja</i> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav text-center ms-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'collection' %}active{% endif %}" aria-current="page" href="{% url 'collection' %}"> <i class="fa fa-bars">Category</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'cart' %}active{% endif %}" aria-current="page" href="{% url 'cart' %}"> <i class="fa fa-shopping-cart">Cart</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" aria-current="page" href="{% url 'wishlist' %}"> <i class="fa fa-heart">Wishlist</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'myorder' %}active{% endif %}" aria-current="page" href="{% url 'myorder' %}"> <i class="fa fa">My Order</i></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-about">About US</i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'aboutbaliraja' %} "> About BaliRaja</a></li>
+              <li><a class="dropdown-item" href="/#"> About Alphanso Mango </a></li>
+              <li><a class="dropdown-item" href="#"> About BaliRaja Farmers </a></li>
+            </ul>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-about">{{request.user}}</i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+              <li><a class="dropdown-item" href="{% url 'logout' %}"> <i class="fa fa">Logout</i> </a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link "  href="{% url 'loginpage' %}"> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link "  href="{% url 'register' %}"> Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            
+{% endblock scripts %}

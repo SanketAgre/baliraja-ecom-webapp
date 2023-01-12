@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: rgb(200, 247, 255);
+    min-height: 95vh;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.content{
+    width: 900px;
+    border: 10px solid rgb(9, 5, 36);
+    background-color: rgba(120, 96, 255, 0.432);
+}
+.img_header{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-around;
+}
+section .img_section, img{
+    width: 200px;
+    height: 220px;
+    display: flex;
+}
+img{
+    border: 5px solid black;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+section .heading{
+    align-self: flex-end;
+}
+section .heading h1{
+    font-size: 50px;
+    font-weight: 600;
+}
+section .heading h5{
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+.about_section{
+    margin: 50px 10px;
+
+}
+section h2{
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+}
+section p{
+
+    font-size: 25px;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    text-align: justify;
+}
+.bio{
+    margin: 50px 10px;
+}
+.bio h3{
+    font-size: 40px;
+    font-weight: 500;
+}
+.biography ul li{
+    font-size: 25px;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    text-align: justify;
+    margin-left: 50px;
+}
+footer{
+    background-color: rgb(11, 6, 32);
+    color: white;
+}
+footer p{
+    font-size: 20px;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    align-items: center;
+}
+footer p a{
+    font-size: 30px;
+    color: aqua;
+}
+    </style>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="content">
+                <section class="img_header">
+                    <div class="img_section">
+                        <img src="/static/images/1.jfif" alt="BajliRaja">
+                    </div>
+                    <div class="heading">
+                        <h1>SAMRAT BALIRAJA</h1>
+                        <h5>1400-1500</h5>
+                    </div>
+                </section>
+                <section class="about_section">
+                    <h2>
+                        SAMRAT BALIRAJA
+                    </h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur culpa, non id labore accusamus voluptate fugiat aliquid iste quibusdam laboriosam ratione repudiandae porro molestias numquam quisquam inventore voluptatem sunt.
+                    </p>
+                </section>
+                <section class="bio">
+                    <h3>BIOGRAPHY</h3>
+                    <div class="biography">
+                        <ul>
+                            <li>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quasi.
+                            </li>
+                        </ul><ul>
+                            <li>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, nulla.
+                            </li>
+                        </ul><ul>
+                            <li>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, exercitationem.
+                            </li>
+                        </ul><ul>
+                            <li>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem, at.
+                            </li>
+                        </ul><ul>
+                            <li>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, placeat?
+                            </li>
+                        </ul><ul>
+                            <li>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, asperiores?
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>more about Samrat BaliRaja on <a href="#"> wikipidia</a></p>
+    </footer>
+</body>
+{% endblock body %}
